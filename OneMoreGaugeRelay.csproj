@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="iRacingSDK.Net" Version="1.0.24" />
+    <PackageReference Include="IRSDKSharper" Version="1.1.4" />
   </ItemGroup>
 
   <ItemGroup>

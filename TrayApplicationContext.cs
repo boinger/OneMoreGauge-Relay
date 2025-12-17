@@ -23,6 +23,14 @@ public class TrayApplicationContext : ApplicationContext
         _iRacingReader = new IRacingReader();
         _broadcaster = new UdpBroadcaster(_settings.BroadcastPort);
 
+        // Hook up iRacing connection events
+        _iRacingReader.OnConnected += () => UpdateStatus(ConnectionStatus.Connected);
+        _iRacingReader.OnDisconnected += () =>
+        {
+            if (_isRunning)
+                UpdateStatus(ConnectionStatus.Waiting);
+        };
+
         // Create context menu
         _contextMenu = new ContextMenuStrip();
         BuildContextMenu();
@@ -91,6 +99,7 @@ public class TrayApplicationContext : ApplicationContext
     {
         _isRunning = true;
         _startStopItem.Text = "Stop";
+        _iRacingReader.Start();
         _updateTimer.Start();
         UpdateStatus(ConnectionStatus.Waiting);
     }
@@ -100,6 +109,7 @@ public class TrayApplicationContext : ApplicationContext
         _isRunning = false;
         _startStopItem.Text = "Start";
         _updateTimer.Stop();
+        _iRacingReader.Stop();
         UpdateStatus(ConnectionStatus.Disconnected);
     }
 
