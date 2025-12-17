@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+    <!-- <ApplicationIcon>Resources\icon.ico</ApplicationIcon> -->
     <AssemblyName>OneMoreGaugeRelay</AssemblyName>
     <RootNamespace>OneMoreGaugeRelay</RootNamespace>
     <Version>1.0.0</Version>
@@ -24,10 +24,12 @@
     <PackageReference Include="IRSDKSharper" Version="1.1.4" />
   </ItemGroup>
 
+  <!-- Icon will be added later
   <ItemGroup>
     <None Update="Resources\icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  -->
 
 </Project>
